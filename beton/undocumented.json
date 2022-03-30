@@ -1,0 +1,47 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/rocskaadam/src/21gram.consulting/src/Beton/Sources/Beton/Bundle/Bundle+localizationBundles.swift",
+      "line": 4,
+      "symbol": "Bundle.localizationBundles",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/rocskaadam/src/21gram.consulting/src/Beton/Sources/Beton/Bundle/BundleAware.swift",
+      "line": 3,
+      "symbol": "BundleAware",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/rocskaadam/src/21gram.consulting/src/Beton/Sources/Beton/Bundle/BundleAware.swift",
+      "line": 4,
+      "symbol": "BundleAware.bundle",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/rocskaadam/src/21gram.consulting/src/Beton/Sources/Beton/Locale/LocaleAware.swift",
+      "line": 3,
+      "symbol": "LocaleAware",
+      "symbol_kind": "source.lang.swift.decl.protocol",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/rocskaadam/src/21gram.consulting/src/Beton/Sources/Beton/Locale/LocaleAware.swift",
+      "line": 4,
+      "symbol": "LocaleAware.locale",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/rocskaadam/src/21gram.consulting/src/Beton/Sources/Beton/Measurement/Unit/Unit.swift",
+      "line": 5,
+      "symbol": "Unit.U",
+      "symbol_kind": "source.lang.swift.decl.associatedtype",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/rocskaadam/src/21gram.consulting/src/Beton"
+}

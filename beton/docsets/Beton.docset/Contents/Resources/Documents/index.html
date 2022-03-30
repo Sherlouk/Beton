@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Beton  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+	<meta name="viewport" content="width=device-width, viewport-fit=cover, initial-scale=1.0" />
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a title="Beton  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p>
+          <a href="index.html">Swift Beton Docs - Beton module</a>
+          <span class="no-mobile"> (85% documented)</span>
+        </p>
+    
+        <p class="header-right">
+          <a href="https://github.com/21GramConsulting/Beton">
+            <img src="img/gh.png" alt="GitHub"/>
+            <span class="no-mobile">View on GitHub</span>
+          </a>
+        </p>
+    
+      </div>
+    </header>
+    <div id="breadcrumbs-container">
+      <div class="content-wrapper">
+        <p id="breadcrumbs">
+          <span class="no-mobile">
+            <a href="index.html">Beton Reference</a>
+            <img id="carat" src="img/carat.png" alt=""/>
+          </span>
+          Beton  Reference
+        </p>
+      </div>
+    </div>
+    <div class="wrapper">
+      <div class="article-wrapper">
+        <article class="main-content">
+          <section>
+            <section class="section">
+              
+              <h1 id='beton' class='heading'>Beton</h1>
+
+<p><code>Beton</code> is a module of the <code>Beton</code> library which contains multiple modules:</p>
+
+<ul>
+<li><a href="../beton/index.html">Beton</a></li>
+<li><a href="../xctbeton/index.html">XCTBeton</a></li>
+</ul>
+<h2 id='usage' class='heading'>Usage</h2>
+<h3 id='importing' class='heading'>Importing</h3>
+
+<p>To use <code>Beton</code> simply import it. If you need anything
+from <a href="https://developer.apple.com/documentation/foundation">Foundation</a> you do not need to explicitly import it. You get
+it for free by importing <code>Beton.</code></p>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">Beton</span>
+</code></pre>
+<h3 id='convenience-api-for-a-href-https-developer-apple-com-documentation-foundation-bundle-code-bundle-code-a' class='heading'>Convenience API for <a href="https://developer.apple.com/documentation/foundation/bundle"><code>Bundle</code></a></h3>
+
+<p>Using <code>Beton</code> it is quite easy to get localized bundles and values from them.</p>
+
+<p>Suppose you have a localization bundle in your project for the <code>hu_HU</code> locale, with a translation for <code>&quot;Apple&quot; = &quot;Alma&quot;</code>
+, but you don&rsquo;t have one for <code>&quot;Banana&quot;</code> (which would be <code>&quot;Banán&quot;</code>). The following example finds the bundle, gets the
+localized version of <code>&quot;Apple&quot;</code>, and falls back to the given key <code>&quot;Banana&quot;</code>.</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">bundle</span>          <span class="o">=</span> <span class="kt">Bundle</span><span class="o">.</span><span class="n">module</span><span class="o">.</span><span class="n">localizationBundles</span><span class="p">[</span><span class="s">"hu_HU"</span><span class="p">]</span>
+<span class="k">let</span> <span class="nv">localizedApple</span>  <span class="o">=</span> <span class="n">bundle</span><span class="p">?</span><span class="o">.</span><span class="nf">localizedString</span><span class="p">(</span><span class="s">"Apple"</span><span class="p">)</span>
+<span class="c1">// localizedApple == "Alma"</span>
+<span class="k">let</span> <span class="nv">localizedBanana</span> <span class="o">=</span> <span class="n">bundle</span><span class="p">?</span><span class="o">.</span><span class="nf">localizedString</span><span class="p">(</span><span class="s">"Banana"</span><span class="p">)</span>
+<span class="c1">// localizedBanana == "Banana"</span>
+</code></pre>
+<h3 id='convenience-api-for-a-href-https-developer-apple-com-documentation-foundation-locale-code-locale-code-a' class='heading'>Convenience API for <a href="https://developer.apple.com/documentation/foundation/locale"><code>Locale</code></a></h3>
+
+<p>Locales in <code>Beton</code> are expressible by string literals.</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">locales</span><span class="p">:</span> <span class="p">[</span><span class="kt">Locale</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s">"en_US"</span><span class="p">,</span> <span class="s">"en_GB"</span><span class="p">,</span> <span class="s">"hu_HU"</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">locale</span> <span class="k">in</span> <span class="n">locales</span> <span class="p">{</span>
+  <span class="nf">print</span><span class="p">(</span><span class="s">"Currency symbol: </span><span class="se">\(</span><span class="n">locale</span><span class="o">.</span><span class="n">currencySymbol</span> <span class="p">??</span> <span class="s">"N/A"</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">// Prints:</span>
+<span class="c1">// Currency symbol: $</span>
+<span class="c1">// Currency symbol: £</span>
+<span class="c1">// Currency symbol: Ft</span>
+</code></pre>
+<h3 id='code-code-operator' class='heading'><code>?!</code> operator</h3>
+
+<p>The <code>?!</code> operator unwraps an <a href="https://developer.apple.com/documentation/swift/optional"><code>Optional</code></a> value if is
+not <code>nil</code>, otherwise throws the given error.</p>
+<pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">GenericError</span><span class="p">:</span> <span class="kt">Error</span> <span class="p">{}</span>
+
+<span class="k">let</span> <span class="nv">answer</span> <span class="o">=</span> <span class="k">try</span> <span class="kt">Int</span><span class="p">(</span><span class="s">"42"</span><span class="p">)</span> <span class="p">?</span><span class="o">!</span> <span class="kt">GenericError</span><span class="p">()</span>
+<span class="c1">// answer == 42</span>
+
+<span class="k">try</span> <span class="kt">Int</span><span class="p">(</span><span class="s">"NaN"</span><span class="p">)</span> <span class="p">?</span><span class="o">!</span> <span class="kt">GenericError</span><span class="p">()</span>
+<span class="c1">// Throws: GenericError()</span>
+</code></pre>
+<h3 id='code-sum-code-extension-on-a-href-https-developer-apple-com-documentation-swift-sequence-code-sequence-code-a-s' class='heading'><code>sum</code> extension on <a href="https://developer.apple.com/documentation/swift/sequence"><code>Sequence</code></a>s</h3>
+
+<p>Calculates the total of all elements in a sequence. Available on any sequence with values that conform
+to <a href="https://developer.apple.com/documentation/swift/additivearithmetic"><code>AdditiveArithmetic</code></a></p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">arraySum</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.1</span><span class="p">,</span> <span class="mf">2.2</span><span class="p">,</span> <span class="mf">3.3</span><span class="p">,</span> <span class="mf">4.4</span><span class="p">,</span> <span class="mf">5.5</span><span class="p">]</span><span class="o">.</span><span class="nf">sum</span><span class="p">()</span>
+<span class="c1">// arraySum == 16.5</span>
+
+<span class="k">let</span> <span class="nv">rangeSum</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">..&lt;</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="nf">sum</span><span class="p">()</span>
+<span class="c1">// rangeSum == 45</span>
+
+<span class="k">let</span> <span class="nv">setSum</span> <span class="o">=</span> <span class="kt">Set</span><span class="p">(</span><span class="nv">arrayLiteral</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="nf">sum</span><span class="p">()</span>
+<span class="c1">// setSum == 6</span>
+</code></pre>
+<h3 id='convenience-for-a-href-https-developer-apple-com-documentation-foundation-measurement-code-measurement-code-a-s' class='heading'>Convenience for <a href="https://developer.apple.com/documentation/foundation/measurement"><code>Measurement</code></a>s</h3>
+
+<p>In <code>Beton</code> measurements have default units and they conform
+to <a href="https://developer.apple.com/documentation/swift/additivearithmetic"><code>AdditiveArithmetic</code></a>.</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">sum</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="kt">Measurement</span><span class="o">&lt;</span><span class="kt">UnitLength</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">value</span><span class="p">:</span> <span class="nv">$0</span><span class="p">,</span> <span class="nv">unit</span><span class="p">:</span> <span class="o">.</span><span class="k">default</span><span class="p">)</span> <span class="p">}</span><span class="o">.</span><span class="nf">sum</span><span class="p">()</span>
+<span class="c1">// sum == 6.0 m</span>
+</code></pre>
+<h2 id='adding-as-a-dependency' class='heading'>Adding as a Dependency</h2>
+
+<p>To use the <code>Beton</code> in a SwiftPM project, add it to the dependencies for your package and your target.</p>
+<pre class="highlight swift"><code><span class="c1">// swift-tools-version:5.5.0</span>
+
+<span class="kd">import</span> <span class="kt">PackageDescription</span>
+
+<span class="k">let</span> <span class="nv">package</span> <span class="o">=</span> <span class="kt">Package</span><span class="p">(</span>
+  <span class="nv">name</span><span class="p">:</span> <span class="s">"MyApplication"</span><span class="p">,</span>
+  <span class="nv">dependencies</span><span class="p">:</span> <span class="p">[</span>
+    <span class="o">.</span><span class="nf">package</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="s">"https://github.com/21GramConsulting/Beton"</span><span class="p">,</span> <span class="nv">from</span><span class="p">:</span> <span class="s">"1.0.0"</span><span class="p">),</span>
+  <span class="p">],</span>
+  <span class="nv">targets</span><span class="p">:</span> <span class="p">[</span>
+    <span class="o">.</span><span class="nf">target</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="s">"MyApplication"</span><span class="p">,</span> <span class="nv">dependencies</span><span class="p">:</span> <span class="p">[</span>
+      <span class="o">.</span><span class="nf">product</span><span class="p">(</span><span class="nv">name</span><span class="p">:</span> <span class="s">"Beton"</span><span class="p">,</span> <span class="nv">package</span><span class="p">:</span> <span class="s">"Beton"</span><span class="p">),</span>
+    <span class="p">])</span>
+  <span class="p">]</span>
+<span class="p">)</span>
+</code></pre>
+
+            </section>
+          </section>
+        </article>
+      </div>
+      <div class="nav-wrapper">
+        <nav class="nav-bottom">
+          <ul class="nav-groups">
+            <li class="nav-group-name">
+              <a href="Extensions.html">Extensions</a>
+              <ul class="nav-group-tasks">
+                <li class="nav-group-task">
+                  <a href="Extensions/Bundle.html">Bundle</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Extensions/Locale.html">Locale</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Extensions/Measurement.html">Measurement</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Extensions/Sequence.html">Sequence</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Extensions/UnitAcceleration.html">UnitAcceleration</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Extensions/UnitAngle.html">UnitAngle</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Extensions/UnitArea.html">UnitArea</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Extensions/UnitConcentrationMass.html">UnitConcentrationMass</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Extensions/UnitDispersion.html">UnitDispersion</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Extensions/UnitDuration.html">UnitDuration</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Extensions/UnitElectricCharge.html">UnitElectricCharge</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Extensions/UnitElectricCurrent.html">UnitElectricCurrent</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Extensions/UnitElectricPotentialDifference.html">UnitElectricPotentialDifference</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Extensions/UnitElectricResistance.html">UnitElectricResistance</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Extensions/UnitEnergy.html">UnitEnergy</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Extensions/UnitFrequency.html">UnitFrequency</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Extensions/UnitFuelEfficiency.html">UnitFuelEfficiency</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Extensions/UnitIlluminance.html">UnitIlluminance</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Extensions/UnitInformationStorage.html">UnitInformationStorage</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Extensions/UnitLength.html">UnitLength</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Extensions/UnitMass.html">UnitMass</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Extensions/UnitPower.html">UnitPower</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Extensions/UnitPressure.html">UnitPressure</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Extensions/UnitSpeed.html">UnitSpeed</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Extensions/UnitTemperature.html">UnitTemperature</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Extensions/UnitVolume.html">UnitVolume</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-group-name">
+              <a href="Functions.html">Functions</a>
+              <ul class="nav-group-tasks">
+                <li class="nav-group-task">
+                  <a href="Functions.html#/s:5Beton2qnoiyxxSg_q_yXKtKs5ErrorR_r0_lF">?!(_:_:)</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Functions.html#/s:5Beton3powy10Foundation11MeasurementVyxGAF_SdtSo6NSUnitCRbzlF">pow(_:_:)</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Functions.html#/s:5Beton4sqrty10Foundation11MeasurementVyxGAFSo6NSUnitCRbzlF">sqrt(_:)</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-group-name">
+              <a href="Protocols.html">Protocols</a>
+              <ul class="nav-group-tasks">
+                <li class="nav-group-task">
+                  <a href="Protocols/BundleAware.html">BundleAware</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Protocols/LocaleAware.html">LocaleAware</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Protocols/Unit.html">Unit</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="footer-wrapper">
+        <section id="footer">
+          <p>&copy; 2022 <a class="link" href="https://21gram.hu" target="_blank" rel="external noopener">21Gram Technology Kft.</a>. All rights reserved. (Last updated: 2022-03-30)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.2</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
+        </section>
+      </div>
+    </div>
+  </body>
+</html>
